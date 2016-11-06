@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Psychic Game</title>
+</head>
+<body>
+
+	<h1>The Psychic Game</h1>
+
+<div id="Question">
+	<p>Guess what letter I'm thinking of?<br>
+	Press any letter to begin.</p>
+</div>
+
+<script type="text/javascript">
+	//set the choices
+	var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+	var wins = 0;
+	var losses = 0;
+	var guessesLeft = 9;
+	var guesses = [];
+
+	var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+	console.log(computerGuess);
+
+	function myFunction(){
+	 guessesLeft = 9;
+	 guesses = [];
+	 
+	}
+
+	//when the user presses a key it recivies the data as a guess
+	document.addEventListener('keyup', function(event) {
+		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+		
+	guesses.push(userGuess);
+	guessesLeft--;
+
+	//logic to determine out come of guess
+	if (userGuess == computerGuess){
+		myFunction(); wins++;
+	}
+	
+	if (guessesLeft == 0){
+		myFunction(); losses++;
+	}
+	
+	//Taking the tallies and displaying in HTML
+	 var html = "<p>Guess what letter I'm thinking of?<br>Press any letter to begin.</p>" +
+	 			"<p>Wins: " +
+	 			wins +
+	 			"</p>" +
+	 			"<p>Losses: " +
+	 			losses +
+	 			"</p>" +
+	 			"<p>Guesses Left: " +
+	 			guessesLeft +
+	 			"</p>" +
+	 			"<p>Guesses: " +
+	 			guesses.join(", ")
+				 + "</p>";
+
+
+	 	//HTML in the code
+	 	document.querySelector("#Question").
+	 		innerHTML = html;
+
+
+});
+
+
+</script>
+
+
+</body>
+</html>
