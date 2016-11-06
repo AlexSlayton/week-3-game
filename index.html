@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Psychic Game</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 </head>
 <body>
 
@@ -11,6 +12,24 @@
 	<p>Guess what letter I'm thinking of?<br>
 	Press any letter to begin.</p>
 </div>
+
+<style type="text/css">
+body {
+	background-color: #ebebeb;
+
+}
+	h1 {
+		color: purple;
+		text-align: center;
+		font-family: Arial;
+		font-size: 50px;
+	}
+
+	p {
+		text-align: center;
+		font-size: 25px;
+	}
+</style>
 
 <script type="text/javascript">
 	//set the choices
@@ -26,7 +45,8 @@
 	function myFunction(){
 	 guessesLeft = 9;
 	 guesses = [];
-	 
+	 computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+	 console.log(computerGuess);
 	}
 
 	//when the user presses a key it recivies the data as a guess
